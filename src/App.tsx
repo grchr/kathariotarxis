@@ -1,14 +1,17 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Row, Col, Card, Timeline, message, Table } from "antd";
+import { Row, Col, Card, Timeline, message, Table, Layout } from 'antd';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { SideNavigationBar } from "./components/SideNavigationBar";
 import { TopNavigationBar } from "./components/TopNavigationBar";
-import { Airman } from "./models/Airman";
-import { Home } from "./models/Home";
-import { Chore } from "./models/Chore";
+import { Airman } from "./pages/Airman";
+import { Home } from "./pages/Home";
+import { Chore } from "./pages/Chore";
+import { News } from "./pages/News";
 
+
+const { Header, Footer, Sider, Content } = Layout;
 
 function App() {
 
@@ -16,13 +19,20 @@ function App() {
     <div className="App">
       <React.Fragment>
         <Router>
+        <Layout>
           <TopNavigationBar />
-          <SideNavigationBar/>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/airmen" component={Airman} />
-            <Route path="/chore" component={Chore} />
-          </Switch>
+          <Layout style={{minHeight: '100vh'}}>
+            <SideNavigationBar/>
+            <Content>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/airmen" component={Airman} />
+                <Route path="/chore" component={Chore} />
+                <Route path="/news" component={News} />
+              </Switch>
+            </Content>
+          </Layout>
+        </Layout>
         </Router>
       </React.Fragment>
     </div>
