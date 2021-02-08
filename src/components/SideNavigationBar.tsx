@@ -10,6 +10,7 @@ import { NewsIcon } from "./MyIcons";
 import { Link } from "react-router-dom";
 import { store, ReduxSelectors } from "../store";
 import { connect } from 'react-redux';
+import { setCurrentActivePage } from './StoreActions';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,7 +23,7 @@ function SideNavigationBar(props: any) {
   });
 
   const onClickHandler = (e: any) => {
-    props.dispatch({ type: "page/changed", payload: e.key });
+    props.setActivePage(e.key);
     setActive(e.key);
   };
 
@@ -64,11 +65,21 @@ function SideNavigationBar(props: any) {
 }
 
 const mapStateToProps = (state : any) => {
-    console.log('mapStateToProps');
+    console.log('mapStateToPropsXXX');
     console.log(state);
     return {
       activePage: state.status.activePage
     };
   };
 
-export default connect(mapStateToProps)(SideNavigationBar);
+const mapDispatchToProps = (dispatch : any) => {
+  console.log('mapDispatchToPropsXXX');
+  console.log(dispatch);
+  return {
+      setActivePage: (key : string) => {
+        dispatch(setCurrentActivePage(key));
+      }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideNavigationBar);

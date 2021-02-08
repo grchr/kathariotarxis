@@ -10,6 +10,7 @@ import { NewsIcon } from "./MyIcons";
 import { Link } from "react-router-dom";
 import { store, ReduxSelectors } from "../store";
 import { connect } from 'react-redux';
+import { setCurrentActivePage } from './StoreActions';
 
 function TopNavigationBar(props: any) {
     console.log('top nav bar props');
@@ -32,7 +33,7 @@ function TopNavigationBar(props: any) {
     }, [store.getState().status.activePage]);
 
     const onClickHandler = (e: any) => {
-        props.dispatch({ type: "page/changed", payload: e.key });
+        props.setActivePage(e.key);
     };
 
     return (
@@ -51,11 +52,21 @@ function TopNavigationBar(props: any) {
 
 
 const mapStateToProps = (state : any) => {
-    console.log('mapStateToProps');
+    console.log('mapStateToPropsXXX');
     console.log(state);
     return {
       activePage: state.status.activePage
     };
-  };
+};
 
-export default connect(mapStateToProps)(TopNavigationBar);
+const mapDispatchToProps = (dispatch : any) => {
+    console.log('mapDispatchToPropsXXX');
+    console.log(dispatch);
+    return {
+        setActivePage: (key : string) => {
+          dispatch(setCurrentActivePage(key));
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopNavigationBar);

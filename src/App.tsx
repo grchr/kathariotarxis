@@ -5,10 +5,10 @@ import { Row, Col, Card, Timeline, message, Table, Layout } from 'antd';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SideNavigationBar from "./components/SideNavigationBar";
 import TopNavigationBar from "./components/TopNavigationBar";
-import { Airman } from "./pages/Airman";
-import { Home } from "./pages/Home";
-import { Chore } from "./pages/Chore";
-import { News } from "./pages/News";
+import AirmanPage from "./pages/AirmanPage";
+import { Home } from "./pages/HomePage";
+import { Chore } from "./pages/ChorePage";
+import { News } from "./pages/NewsPage";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -26,7 +26,7 @@ function App() {
             <Content>
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/airmen" component={Airman} />
+                <Route path="/airmen" component={AirmanPage} />
                 <Route path="/chore" component={Chore} />
                 <Route path="/news" component={News} />
               </Switch>
