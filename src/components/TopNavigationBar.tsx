@@ -17,20 +17,9 @@ function TopNavigationBar(props: any) {
     console.log(props);
     const [active, setActive] = useState("");
 
-    //   ReduxSelectors.activeNavigationItem$.subscribe((s) => {
-    //     console.log("Inside selector subscription");
-    //     console.log(s);
-    //     setActive(s);
-    //   });
-
-    // const unsubscribe = store.subscribe(() => {
-    //     console.log("State after dispatch: ", store.getState());
-    //     setActive(store.getState().status.activePage);
-    // });
-
     useEffect(() => {
         setActive(props.activePage);
-    }, [store.getState().status.activePage]);
+    }, [props.activePage]);
 
     const onClickHandler = (e: any) => {
         props.setActivePage(e.key);

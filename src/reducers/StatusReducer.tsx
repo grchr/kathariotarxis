@@ -1,6 +1,7 @@
 export const statusReducer = (state : any = {
     activePage : 'home',
-    sideBarCollapsed: false
+    sideBarCollapsed: false,
+    visibleAirmanDrawer: false
 }, action : any) => {
     switch(action.type) {
         case 'page/changed': {

@@ -15,12 +15,6 @@ import { setCurrentActivePage } from './StoreActions';
 const { Header, Footer, Sider, Content } = Layout;
 
 function SideNavigationBar(props: any) {
-  //   const [active, setActive] = useState(store.getState().status.activePage);
-
-  const unsubscribe = store.subscribe(() => {
-    console.log("State after dispatch: ", store.getState());
-    setActive(store.getState().status.activePage);
-  });
 
   const onClickHandler = (e: any) => {
     props.setActivePage(e.key);
@@ -29,16 +23,11 @@ function SideNavigationBar(props: any) {
 
   const [active, setActive] = useState("");
 
-  // ReduxSelectors.activeNavigationItem$.subscribe((s) => {
-  //     console.log("Inside selector subscription");
-  //     console.log(s);
-  //     setActive(s);
-  // });
-
   useEffect(() => {
-    setActive(store.getState().status.activePage);
+    setActive(props.activePage);
     console.log(store.getState());
-  }, [store.getState().status.activePage]);
+  }, [props.activePage]);
+
   return (
     <Sider collapsible collapsed={false} theme={"light"}>
       <Menu selectedKeys={[active]} onClick={onClickHandler} mode="inline">

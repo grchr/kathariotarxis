@@ -1,20 +1,24 @@
 export const airmanReducer = (state : any = {
     airmen: [{
+        key: 0,
         id: 0,
         name: 'Giorgos',
         surname: 'Chronis'
       },
       {
+        key: 1,
         id: 1,
         name: 'Stefan',
         surname: 'Trikalinos'
       },
       {
+        key: 2,
         id: 2,
         name: 'Stavros',
         surname: 'Netflixakias'
       },
       {
+        key: 3,
         id: 3,
         name: 'Giorgos',
         surname: 'Lamp'

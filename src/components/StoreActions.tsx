@@ -5,9 +5,9 @@ export function setCurrentActivePage(key : string) {
     }
 }
 
-export function setEditedAirmen(key : string) {
+export function setEditedAirmen(key : any) {
     return {
-        type: 'page/changed',
+        type: 'airmen/airmanEdited',
         payload: key
     }
 }
