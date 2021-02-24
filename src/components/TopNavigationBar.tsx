@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { NewsIcon } from "./MyIcons";
 import { Link } from "react-router-dom";
-import { store, ReduxSelectors } from "../store";
+import { store } from "../store";
 import { connect } from 'react-redux';
 import { setCurrentActivePage } from './StoreActions';
 

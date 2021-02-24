@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Space, Table, Drawer } from "antd";
-import { store, ReduxSelectors } from "../store";
+import { store } from "../store";
 import { connect } from "react-redux";
 import { setEditedAirmen, setCurrentActivePage } from "../components/StoreActions";
 import { useHistory } from 'react-router-dom'
