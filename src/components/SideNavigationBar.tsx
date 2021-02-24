@@ -16,6 +16,9 @@ const { Header, Footer, Sider, Content } = Layout;
 
 function SideNavigationBar(props: any) {
 
+  console.log('SideNavigationBar');
+  console.log(props);
+
   const onClickHandler = (e: any) => {
     props.setActivePage(e.key);
     setActive(e.key);
@@ -25,17 +28,22 @@ function SideNavigationBar(props: any) {
 
   useEffect(() => {
     setActive(props.activePage);
-    console.log(store.getState());
-  }, [props.activePage]);
+    //console.log(store.getState());
+
+    return function cleanup() {
+      console.log('sidenavbar cleanup called');
+      console.log(props);
+    }
+  }, [props]);
 
   return (
     <Sider collapsible collapsed={false} theme={"light"}>
       <Menu selectedKeys={[active]} onClick={onClickHandler} mode="inline">
-        <Menu.Item key="airman" icon={<HomeOutlined />}>
+        <Menu.Item key="/airmen" icon={<HomeOutlined />}>
           Airmen
           <Link to="/airmen"></Link>
         </Menu.Item>
-        <Menu.Item key="chore" icon={<MailOutlined />}>
+        <Menu.Item key="/chore" icon={<MailOutlined />}>
           Chores
           <Link to="/chore"></Link>
         </Menu.Item>
@@ -54,16 +62,16 @@ function SideNavigationBar(props: any) {
 }
 
 const mapStateToProps = (state : any) => {
-    console.log('mapStateToPropsXXX');
-    console.log(state);
+    // console.log('mapStateToPropsXXX');
+    // console.log(state);
     return {
       activePage: state.status.activePage
     };
   };
 
 const mapDispatchToProps = (dispatch : any) => {
-  console.log('mapDispatchToPropsXXX');
-  console.log(dispatch);
+  // console.log('mapDispatchToPropsXXX');
+  // console.log(dispatch);
   return {
       setActivePage: (key : string) => {
         dispatch(setCurrentActivePage(key));

@@ -13,13 +13,18 @@ import { connect } from 'react-redux';
 import { setCurrentActivePage } from './StoreActions';
 
 function TopNavigationBar(props: any) {
-    console.log('top nav bar props');
+    console.log('TopNavigationBar');
     console.log(props);
     const [active, setActive] = useState("");
 
     useEffect(() => {
         setActive(props.activePage);
-    }, [props.activePage]);
+
+        return function cleanup() {
+            console.log('topnavbar cleanup called');
+            console.log(props);
+        }
+    }, [props]);
 
     const onClickHandler = (e: any) => {
         props.setActivePage(e.key);
@@ -27,11 +32,11 @@ function TopNavigationBar(props: any) {
 
     return (
         <Menu selectedKeys={[active]} onClick={onClickHandler} mode="horizontal">
-        <Menu.Item key="home" icon={<HomeOutlined />}>
+        <Menu.Item key="/" icon={<HomeOutlined />}>
             Home
             <Link to="/"></Link>
         </Menu.Item>
-        <Menu.Item key="news" icon={<MailOutlined />}>
+        <Menu.Item key="/news" icon={<MailOutlined />}>
             News
             <Link to="/news"></Link>
         </Menu.Item>
@@ -41,16 +46,16 @@ function TopNavigationBar(props: any) {
 
 
 const mapStateToProps = (state : any) => {
-    console.log('mapStateToPropsXXX');
-    console.log(state);
+    // console.log('mapStateToPropsXXX');
+    // console.log(state);
     return {
       activePage: state.status.activePage
     };
 };
 
 const mapDispatchToProps = (dispatch : any) => {
-    console.log('mapDispatchToPropsXXX');
-    console.log(dispatch);
+    // console.log('mapDispatchToPropsXXX');
+    // console.log(dispatch);
     return {
         setActivePage: (key : string) => {
           dispatch(setCurrentActivePage(key));

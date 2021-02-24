@@ -1,5 +1,5 @@
 export const statusReducer = (state : any = {
-    activePage : 'home',
+    activePage : '/',
     sideBarCollapsed: false,
     visibleAirmanDrawer: false
 }, action : any) => {
