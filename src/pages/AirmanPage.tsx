@@ -3,7 +3,8 @@ import { Space, Table, Drawer } from "antd";
 import { store } from "../store";
 import { connect } from "react-redux";
 import { setEditedAirmen, setCurrentActivePage } from "../components/StoreActions";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import { AirmanModel } from '../models/AirmanModel';
 
 function AirmanPage(props: any) {
   console.log("AirmanPage");
@@ -35,12 +36,7 @@ function AirmanPage(props: any) {
   const onClickHandler = (e: any) => {
       // console.log('onclick called');
       // console.log(history);
-      props.setEditedAirmen({
-        key: 2,
-        id: 2,
-        name: 'ra',
-        surname: 'Netflixakias'
-      });
+      props.setEditedAirmen(new AirmanModel(2,2,'ra','Netflixakias'));
       setVisibleAirmanDrawer(true);
   };
 

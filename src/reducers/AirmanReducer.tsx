@@ -1,33 +1,16 @@
+import { AirmanModel } from '../models/AirmanModel'
+
 export const airmanReducer = (state : any = {
-    airmen: [{
-        key: 0,
-        id: 0,
-        name: 'Giorgos',
-        surname: 'Chronis'
-      },
-      {
-        key: 1,
-        id: 1,
-        name: 'Stefan',
-        surname: 'Trikalinos'
-      },
-      {
-        key: 2,
-        id: 2,
-        name: 'Stavros',
-        surname: 'Netflixakias'
-      },
-      {
-        key: 3,
-        id: 3,
-        name: 'Giorgos',
-        surname: 'Lamp'
-      }
+    airmen: [
+        new AirmanModel(0,0,'Giorgos', 'Chronis'),
+        new AirmanModel(1,1,'Stefan', 'Trikalinos'),
+        new AirmanModel(2,2,'Stavros', 'Netflixakias'),
+        new AirmanModel(3,3,'Giorgos', 'Lamp')
     ]
 }, action : any) => {
     switch(action.type) {
         case 'airmen/airmanEdited': {
-            let airmanIndex = state.airmen.findIndex((a : any) => a.id === action.payload.id);
+            let airmanIndex = state.airmen.findIndex((a : AirmanModel) => a.id === action.payload.id);
             if (airmanIndex > -1) {
               let newState = {
                 ...state,
