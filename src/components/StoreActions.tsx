@@ -1,3 +1,5 @@
+import { AirmanModel } from "../models/AirmanModel"
+
 export function setCurrentActivePage(key : string) {
     return {
         type: 'page/changed',
@@ -11,4 +13,18 @@ export function setEditedAirmen(key : any) {
         payload: key
     }
 
+}
+
+export function setCurrentlyEditedAirman(key: AirmanModel) {
+    return {
+        type: 'airmen/currentlyEditedAirmanChanged',
+        payload: key
+    }
+}
+
+export function setVisibleAirmanDrawer(key: boolean) {
+    return {
+        type: 'airmen/status/visibleAirmanDrawer',
+        payload: key
+    }
 }

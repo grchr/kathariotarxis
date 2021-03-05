@@ -6,7 +6,8 @@ export const airmanReducer = (state : any = {
         new AirmanModel(1,1,'Stefan', 'Trikalinos'),
         new AirmanModel(2,2,'Stavros', 'Netflixakias'),
         new AirmanModel(3,3,'Giorgos', 'Lamp')
-    ]
+    ],
+    currentEditedAirmanRow: new AirmanModel(null, null, 'Test', 'Test')
 }, action : any) => {
     switch(action.type) {
         case 'airmen/airmanEdited': {
@@ -20,7 +21,20 @@ export const airmanReducer = (state : any = {
               return newState;
             }
             return state;
+        }
+        case 'airmen/currentlyEditedAirmanChanged': {
+          console.log('airmen/currentlyEditedAirmanChanged');
+          console.log('state before update');
+          console.log(state);
+          let newState = {
+            ...state,
+            airmen: [...state.airmen],
+            currentEditedAirmanRow: AirmanModel.clone(action.payload)
           }
+          console.log('state after update');
+          console.log(newState);
+          return newState
+        }
         default:
             // If this reducer doesn't recognize the action type, or doesn't
             // care about this specific action, return the existing state unchanged

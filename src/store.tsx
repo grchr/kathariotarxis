@@ -8,7 +8,7 @@ const myLogger = (store: any) => (next: any) => (action: any) => {
   console.log("Logged Action Payload: ", action.payload);
   switch(action.type) {
     case 'airmen/airmanEdited': 
-      action.payload.surname = 'ChangedByMiddleware';
+      //action.payload.surname = 'ChangedByMiddleware';
       break;
     default:
         // If this reducer doesn't recognize the action type, or doesn't
